@@ -27,21 +27,22 @@ public class FloorPublisher {
 
          while (true) {
             // generate random values for light and window status (ON/OFF, OPEN/CLOSED)
-            String lightID = (random.nextBoolean()) ? "ON" : "OFF";
-            String windowStatus = (random.nextBoolean()) ? "OPEN" : "CLOSED";
+            String lightID = random.nextBoolean() ? "ON" : "OFF";
+            String window = random.nextBoolean() ? "OPEN" : "CLOSED";
 
             // create topics for the light and window status values
             String lightTopic = "floor/light/ID";
             String windowTopic = "floor/window/status";
 
             // publish the light and window status values to the respective topics
-            FloorPublisher.publishMessage(mqttClient, lightTopic, lightID);
+            publishMessage(mqttClient, lightTopic, lightID);
 
             // publish the window status value to the window topic
-            FloorPublisher.publishMessage(mqttClient, windowTopic, windowStatus);
+            publishMessage(mqttClient, windowTopic, window);
 
             Thread.sleep(1000);
          }// end of while loop
+         // handle exceptions that may occur during the execution of the program
       } catch (MqttException | InterruptedException e) {
          if (mqttClient != null) {// check if the MQTT client object is not null before disconnecting
             String errorTopic = "floor/error";// create a topic for error messages
@@ -49,7 +50,6 @@ public class FloorPublisher {
             try {
                // publish the error message to the error topic using the publishMessage method
                publishMessage(mqttClient, errorTopic, errorMessage);
-
                // handle any exceptions that may occur during the publishing of the error message
             } catch (MqttException me) {
                me.printStackTrace();// print the stack trace of the exception
@@ -65,7 +65,7 @@ public class FloorPublisher {
    private static void publishMessage(MqttClient mqttClient, String topic, String payload) throws MqttException {
       // create a new message object
       MqttMessage message = new MqttMessage();
-     message.setPayload(payload.getBytes());// set the payload of the message
+      message.setPayload(payload.getBytes());// set the payload of the message
       mqttClient.publish(topic, message);// publish the message to the topic
       // print the message to the console
       System.out.println("Published message: " + payload + " to " + topic);

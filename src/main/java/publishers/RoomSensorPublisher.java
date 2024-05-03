@@ -7,13 +7,14 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 
-
 public class RoomSensorPublisher {
 
    public static void main(String[] args) {
+
       String broker = "tcp://broker.hivemq.com:1883";
       String clientId = "RoomSensorPublisher";
       MqttClient mqttClient = null;// create a new MQTT client object
+
       try {
          // create a new MQTT client object with the broker and client ID
          mqttClient = new MqttClient(broker, clientId);
@@ -47,7 +48,8 @@ public class RoomSensorPublisher {
             try {
                // publish the error message to the error topic using the publishMessage method
                publishMessage(mqttClient, errorTopic, errorMessage);
-            } catch (MqttException me) {// handle any exceptions that may occur during the publishing of the error message
+               // handle any exceptions that may occur during the publishing of the error message
+            } catch (MqttException me) {
                me.printStackTrace();
             }// end of try-catch block
          }// end of if   block
