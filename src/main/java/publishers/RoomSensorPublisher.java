@@ -68,7 +68,7 @@ public class RoomSensorPublisher {
          MqttMessage message = new MqttMessage();
          message.setPayload(payload.getBytes());
          mqttClient.publish(topic, message);
-         System.out.println("Published message: " + payload + " to " + topic);
+         //System.out.println("Published message: " + payload + " to " + topic);
       }
    }// end of publishMessage method
 

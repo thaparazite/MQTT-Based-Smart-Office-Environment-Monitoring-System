@@ -42,7 +42,7 @@ public class FloorPublisher {
 
                // publish the window status value to the window topic
                FloorPublisher.publishMessage(mqttClient, windowTopic, window);
-               Thread.sleep(500);
+               Thread.sleep(1000);
 
             }// end of while loop
             // handle exceptions that may occur during the execution of the program
@@ -70,7 +70,7 @@ public class FloorPublisher {
          MqttMessage message = new MqttMessage();
          message.setPayload(payload.getBytes());
          mqttClient.publish(topic, message);
-         System.out.println("Published message: " + payload + " to " + topic);
+         //System.out.println("Published message: " + payload + " to " + topic);
       }
    }// end of publishMessage method
 
