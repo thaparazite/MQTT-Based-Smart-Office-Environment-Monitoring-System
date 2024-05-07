@@ -1,0 +1,33 @@
+.label, .button {
+    -fx-padding: 5px; /* Increase padding to 20px */
+    -fx-border-radius: 20px; /* Add rounded corners */
+}
+.root {
+    -fx-background-color: #ADD8E6; /* Light blue background color */
+}
+
+.label {
+    -fx-font-weight: bold; /* Make label content bold */
+}
+
+.button {
+    -fx-padding: 5px;
+    -fx-border-radius: 10px; /* Adjust border radius to 10px */
+    -fx-border-color: #000000; /* Black border color */
+    -fx-border-width: 2px; /* Border width */
+    -fx-background-color: #ADD8E6; /* Light blue background color */
+    -fx-background-radius: 10px; /* Adjust background radius to 5px */
+    -fx-font-weight: bold; /* Make button content bold */
+    -fx-text-fill: #000000; /* Black text color */
+    -fx-transition: all 0.3s ease 0s; /* Transition effect for hover and active states */
+}
+
+.button:hover {
+    -fx-background-color: #00FFFF; /* Neon color for hover state */
+    -fx-background-insets: 0; /* Remove neon color from corners */
+}
+
+.button:pressed {
+    -fx-background-color: #1E90FF; /* Different color for active state */
+    -fx-background-insets: 0; /* Remove color from corners when button is pressed */
+}
